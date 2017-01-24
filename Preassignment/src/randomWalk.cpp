@@ -1,5 +1,5 @@
 /*
-   code.cpp
+   randomWalk.cpp
 
    Created by Petter Taule on 24.01.2017
    Copyright (c) 2017 Petter Taule. All rights reserved.
