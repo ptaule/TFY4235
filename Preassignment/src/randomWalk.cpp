@@ -9,13 +9,11 @@
 #include<random>
 #include<armadillo>
 #include<ctime>
-#include<thread>
 #include<fstream>
 
 using namespace arma;
 
 const int N = 10000;
-const int threads = 4;
 
 Col<int> distribution = zeros<Col<int>>(N);
 
@@ -27,7 +25,7 @@ int main(int argc, char *argv[]) {
     std::default_random_engine generator(seeder());
     std::uniform_int_distribution<int> uniform(0,1);
 
-    for (int i = 0; i < N/4; ++i) {
+    for (int i = 0; i < N; ++i) {
         int sum = 0;
         int steps = 0;
 
