@@ -13,7 +13,7 @@
 
 using namespace arma;
 
-const int N = 1000;
+const int N = 10000;
 const int threads = 4;
 
 Col<int> distribution = zeros<Col<int>>(N);
@@ -42,7 +42,9 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    distribution.save("distribution.txt", raw_ascii);
+    if(!distribution.save("distribution.txt", raw_ascii)) {
+        std::cout << "Error: kunne ikke lagre filen" << std::endl;
+    }
 
     time = clock() - time;
     std::cout << "Programmet brukte " << static_cast<double>(time)/CLOCKS_PER_SEC << " sekunder" << std::endl;
