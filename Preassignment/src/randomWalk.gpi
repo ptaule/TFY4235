@@ -1,0 +1,10 @@
+set terminal epslatex
+set output "./../res/plot.tex"
+set xlabel "$x$"
+set logscale x 10
+set ylabel "$y$"
+set logscale y 10
+# set yrange [-1:1.5]
+
+
+plot "distribution.txt" using 1:2 with lines

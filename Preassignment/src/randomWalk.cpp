@@ -10,6 +10,7 @@
 #include<armadillo>
 #include<ctime>
 #include<thread>
+#include<fstream>
 
 using namespace arma;
 
@@ -42,9 +43,12 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if(!distribution.save("distribution.txt", raw_ascii)) {
-        std::cout << "Error: kunne ikke lagre filen" << std::endl;
+    std::ofstream output("distribution.txt");
+
+    for (int i = 0; i < N; ++i) {
+        output << i << " " << distribution(i) << "\n";
     }
+
 
     time = clock() - time;
     std::cout << "Programmet brukte " << static_cast<double>(time)/CLOCKS_PER_SEC << " sekunder" << std::endl;
