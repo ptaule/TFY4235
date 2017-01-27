@@ -3,7 +3,9 @@
 cd src/
 
 make randomWalk
+printf "Running program..."
 ./randomWalk
+printf "done."
 
 gnuplot randomWalk.gpi
 

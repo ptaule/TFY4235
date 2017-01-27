@@ -13,7 +13,7 @@
 
 using namespace arma;
 
-const int N = 10000;
+const int N = 1000000;
 
 Col<int> distribution = zeros<Col<int>>(N);
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
             random == 1 ? ++sum : --sum;
             steps++;
         }
-        while (sum != 0);
+        while (sum != 0 && steps < N);
 
         if (steps < N) {
             distribution(steps)++;
