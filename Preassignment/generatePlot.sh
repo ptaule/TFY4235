@@ -3,6 +3,7 @@
 cd src/
 
 make randomWalk
+./randomWalk
 
 gnuplot randomWalk.gpi
 
