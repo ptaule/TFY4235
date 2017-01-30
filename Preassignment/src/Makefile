@@ -1,14 +1,13 @@
-CC = g++
+CXX = g++
 FLAGS = -Wall -O2 --std=c++11
 LIBS = -lblas -llapack -larmadillo
 DEBUG_FLAGS = -ggdb
 
+all: randomWalk
+
 randomWalk: randomWalk.cpp
-	${CC} $^ -o $@ ${FLAGS} ${LIBS}
+	${CXX} $^ -o $@ ${FLAGS} ${LIBS}
 
-# build:
-# 	${CC} ${FLAGS} ${SOURCE}
-
-# debug:
-# 	${CC} ${FLAGS} ${DEBUG_FLAGS} ${SOURCE}
+debug:
+	${CXX} $^ -o $@ ${FLAGS} ${LIBS} ${DEBUG_FLAGS}
 
