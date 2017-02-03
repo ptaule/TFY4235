@@ -8,9 +8,6 @@
 #ifndef diffusion_hpp
 #define diffusion_hpp
 
-#include<iostream>
-#include<armadillo>
-
 using realNum = double;
 
 const int TOTTIME      = 100; // Total time of simulation
@@ -22,7 +19,7 @@ const int INTERVALS    = 10;  // Partial intervals
 const realNum D        = 1;
 
 
-void euler_explicit(const int size);
+void euler_explicit(const int size, const int timeSteps);
 realNum getALPHA();
 
 #endif /* ifndef diffusion_hpp */

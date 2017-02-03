@@ -5,10 +5,12 @@
    Copyright (c) 2017 Petter Taule. All rights reserved.
 */
 
+#include<iostream>
 #include"diffusion.hpp"
 
 int main(int argc, char *argv[]) {
-    euler_explicit(I);
+    std::cout << getALPHA();
+    euler_explicit(INTERVALS, N);
 
     return 0;
 }
