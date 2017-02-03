@@ -3,9 +3,12 @@ FLAGS = -Wall -O2 --std=c++11
 LIBS = -lblas -llapack -larmadillo
 DEBUG_FLAGS = -ggdb
 
-all: svd
+all: svd.prog
 
-svd: svd.cpp
+run: all
+	./svd.prog
+
+svd.prog: svd.cpp
 	${CXX} $^ -o $@ ${FLAGS} ${LIBS}
 
 debug: svd.cpp

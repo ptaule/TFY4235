@@ -3,9 +3,12 @@ FLAGS = -Wall -O2 --std=c++11
 LIBS = -lblas -llapack -larmadillo
 DEBUG_FLAGS = -ggdb
 
-all: simulator
+all: simulator.prog
 
-simulator: main.o diffusion.o
+run: all
+	./simulator.prog
+
+simulator.prog: main.o diffusion.o
 	${CXX} $^ -o $@
 
 main.o: main.cpp
@@ -16,3 +19,6 @@ diffusion.o: diffusion.cpp
 
 debug:
 	${CXX} $^ -o $@ ${FLAGS} ${LIBS} ${DEBUG_FLAGS}
+
+clean:
+	rm -f *.o
