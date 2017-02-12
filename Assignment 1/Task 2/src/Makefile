@@ -1,24 +1,33 @@
 CXX = g++
-FLAGS = -Wall -O2 --std=c++11
+FLAGS = -Wall -Wextra -Wpedantic -O3 --std=c++11
 LIBS = -lblas -llapack -larmadillo
 DEBUG_FLAGS = -ggdb
 
-all: simulator.prog
+# Reminder:
+# $@ - target
+# $^ - all dependencies
+# $< - first dependency
+
+plot: run
+	gnuplot diffusion.gpi
+	# epstopdf ../res/diffusion.eps
 
 run: all
-	./simulator.prog
+	time ./diffusion.prog > diffusion.log
 
-simulator.prog: main.o diffusion.o
-	${CXX} $^ -o $@
+all: diffusion.prog
 
-main.o: main.cpp
-	${CXX} $^ -c ${FLAGS} ${LIBS}
+diffusion.prog: main.o diffusion.o
+	${CXX} $^ -o $@ ${LIBS}
 
-diffusion.o: diffusion.cpp
-	${CXX} $^ -c ${FLAGS} ${LIBS}
+main.o: main.cpp diffusion.hpp
+	${CXX} $< -c ${FLAGS}
 
-debug:
-	${CXX} $^ -o $@ ${FLAGS} ${LIBS} ${DEBUG_FLAGS}
+diffusion.o: diffusion.cpp diffusion.hpp
+	${CXX} $< -c ${FLAGS}
+
+debug: main.cpp diffusion.cpp
+	${CXX} $^ -o debug.prog ${FLAGS} ${LIBS} ${DEBUG_FLAGS}
 
 clean:
 	rm -f *.o
