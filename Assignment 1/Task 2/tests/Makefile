@@ -1,5 +1,5 @@
 CXX = g++
-FLAGS = -Wall -O2 --std=c++11
+FLAGS = -Wall -O3 --std=c++11
 LIBS = -lblas -llapack -larmadillo
 DEBUG_FLAGS = -ggdb
 
@@ -11,9 +11,9 @@ DEBUG_FLAGS = -ggdb
 all: tests.prog
 
 run: tests.prog
-	./tests.prog
+	time ./tests.prog
 
-tests.prog: tests.o ../src/diffusion.o
+tests.prog: main.cpp tests.o ../src/diffusion.o
 	${CXX} $^ -o $@ ${LIBS}
 
 tests.o: tests.cpp

@@ -24,17 +24,85 @@ void cflConstant() {
 }
 
 
-void sumConcentration() {
-    Col<realNum> U = zeros<Col<realNum>>(INTERVALS);
-    U(INTERVALS/2) = 1;
-    eulerExplicit(U, INTERVALS, N);
-    std::cout << "Summen av U er " << sum(U) << std::endl;
-    std::cout << "U_0 = " << U_0 << std::endl;
+void sumTest_neumannExplicit() {
+    Col<realNum> U = zeros<Col<realNum>>(INTERVALS+2);
+    U(((INTERVALS+2)/2)) = U_0;
+
+    neumann::eulerExplicit(U, INTERVALS, N);
+    realNum diff = std::abs(sum(U) - U_0);
+    if (diff > epsilon) {
+        std::cout << "Eksplisitt metode: Avvik i masse: " << diff
+            << " er større enn epsilon: " << epsilon << std::endl;
+    }
 }
 
+void sumTest_neumannImplicit() {
+    Col<realNum> U = zeros<Col<realNum>>(INTERVALS);
+    U((INTERVALS/2)) = U_0;
 
-int main(int argc, char *argv[]) {
-    cflConstant();
-    sumConcentration();
-    return 0;
+    neumann::eulerImplicit(U, INTERVALS, N);
+    realNum diff = std::abs(sum(U) - U_0);
+    if (diff > epsilon) {
+        std::cout << "Implisitt metode:Avvik i masse: " << diff
+            << " er større enn epsilon: " << epsilon << std::endl;
+    }
+}
+
+void sumTest_neumannCrankNicolsohn() {
+    Col<realNum> U = zeros<Col<realNum>>(INTERVALS);
+    U((INTERVALS/2)) = U_0;
+
+    neumann::crankNicolsohn(U, INTERVALS, N);
+    realNum diff = std::abs(sum(U) - U_0);
+    if (diff > epsilon) {
+        std::cout << "CrankNicolsohn metode: Avvik i masse: " << diff
+            << " er større enn epsilon: " << epsilon << std::endl;
+    }
+}
+
+void thomasAlgorithm_identityTest() {
+    const unsigned int size = 10;
+    Mat<realNum> I = eye<Mat<realNum>>(size,size);
+    Col<realNum> b = ones<Mat<realNum>>(size);
+    Col<realNum> X = zeros<Mat<realNum>>(size);
+
+    thomasAlgorithm(I,b,X,size);
+
+    if (!approx_equal(X,(I*b),"absdiff", epsilon)) {
+        std::cout << "identitytest failed. " << std::endl;
+    }
+}
+
+void thomasAlgorithm_test1() {
+    const unsigned int size = 10;
+    Mat<realNum> A = zeros<Mat<realNum>>(size,size);
+    Col<realNum> b = ones<Mat<realNum>>(size);
+    Col<realNum> X = zeros<Mat<realNum>>(size);
+
+    A.diag() += 3;
+    A.diag(-1) += 1;
+    A.diag(1) += 1;
+
+    thomasAlgorithm(A,b,X,size);
+
+    if (!approx_equal(X,(A.i()*b),"absdiff", epsilon)) {
+        std::cout << "test1 failed. " << std::endl;
+    }
+}
+
+void thomasAlgorithm_test2() {
+    const unsigned int size = 10;
+    Mat<realNum> A = zeros<Mat<realNum>>(size,size);
+    Col<realNum> b = ones<Mat<realNum>>(size);
+    Col<realNum> X = zeros<Mat<realNum>>(size);
+
+    A.diag() += 3;
+    A.diag(-1) += -1;
+    A.diag(1) += 2;
+
+    thomasAlgorithm(A,b,X,size);
+
+    if (!approx_equal(X,(A.i()*b),"absdiff", epsilon)) {
+        std::cout << "test2 failed. " << std::endl;
+    }
 }
