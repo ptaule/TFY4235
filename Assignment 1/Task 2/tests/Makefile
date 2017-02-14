@@ -16,7 +16,7 @@ run: tests.prog
 tests.prog: main.cpp tests.o ../src/diffusion.o
 	${CXX} $^ -o $@ ${LIBS}
 
-tests.o: tests.cpp
+tests.o: tests.cpp ../src/diffusion.hpp
 	${CXX} $< -c ${FLAGS}
 
 ../src/diffusion.o: ../src/diffusion.cpp

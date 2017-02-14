@@ -10,7 +10,7 @@
 void cflConstant();
 void sumTest_neumannExplicit();
 void sumTest_neumannImplicit();
-void sumTest_neumannCrankNicolsohn();
+void sumTest_neumannCrankNicolson();
 void thomasAlgorithm_identityTest();
 void thomasAlgorithm_test1();
 void thomasAlgorithm_test2();

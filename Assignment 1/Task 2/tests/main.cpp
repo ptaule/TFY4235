@@ -12,9 +12,9 @@
 int main() {
     /* sumTest_neumannExplicit(); */
     /* sumTest_neumannImplicit(); */
-    sumTest_neumannCrankNicolsohn();
-    thomasAlgorithm_identityTest();
-    thomasAlgorithm_test1();
-    thomasAlgorithm_test2();
+    sumTest_neumannCrankNicolson();
+    /* thomasAlgorithm_identityTest(); */
+    /* thomasAlgorithm_test1(); */
+    /* thomasAlgorithm_test2(); */
     return 0;
 }
