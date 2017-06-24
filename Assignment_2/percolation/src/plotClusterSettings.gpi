@@ -1,0 +1,11 @@
+set terminal epslatex
+set output '../res/img/cluster'.PMARK.'.tex'
+set xrange [0:L]
+set yrange [0:L]
+set xlabel "$x$"
+set ylabel "$y$"
+set nokey
+
+set style line 1 lt rgb "blue"  pointtype 0
+
+plot LATTICEFILE with points ls 1

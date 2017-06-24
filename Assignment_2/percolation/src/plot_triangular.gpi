@@ -1,0 +1,70 @@
+set style line 1  linewidth 1.5 linecolor rgb "red"
+set style line 2  linewidth 1.5 linecolor rgb "green"
+set style line 3  linewidth 1.5 linecolor rgb "yellow"
+set style line 4  linewidth 1.5 linecolor rgb "blue"
+set style line 5  linewidth 1.5 linecolor rgb "cyan"
+set style line 6  linewidth 1.5 linecolor rgb "magenta"
+set style line 7  linewidth 1.5 linecolor rgb "beige"
+set style line 8  linewidth 1.5 linecolor rgb "gold"
+set style line 9  linewidth 1.5 linecolor rgb "purple"
+set style line 10 linewidth 1.5 linecolor rgb "black"
+
+# -------------------------------------------------------------------------------- #
+
+set terminal epslatex
+set output '../res/img/triangular_p_inf.tex'
+set xlabel "$p$"
+set xrange [0.2:0.5]
+set ylabel "$P_{\\infty}$"
+set key bottom right
+
+plot "./data/triangular/triangular_10000.txt"   using 1:2 with lines linestyle 1  title "$ N= 10000$", \
+     "./data/triangular/triangular_40000.txt"   using 1:2 with lines linestyle 2  title "$ N= 40000$", \
+     "./data/triangular/triangular_90000.txt"   using 1:2 with lines linestyle 3  title "$ N= 90000$", \
+     # "./data/triangular/triangular_160000.txt"  using 1:2 with lines linestyle 4  title "$ N= 160000$", \
+     # "./data/triangular/triangular_250000.txt"  using 1:2 with lines linestyle 5  title "$ N= 250000$", \
+     # "./data/triangular/triangular_360000.txt"  using 1:2 with lines linestyle 6  title "$ N= 360000$", \
+     # "./data/triangular/triangular_490000.txt"  using 1:2 with lines linestyle 7  title "$ N= 490000$", \
+     # "./data/triangular/triangular_640000.txt"  using 1:2 with lines linestyle 8  title "$ N= 640000$", \
+     # "./data/triangular/triangular_810000.txt"  using 1:2 with lines linestyle 9  title "$ N= 810000$", \
+     # "./data/triangular/triangular_1000000.txt" using 1:2 with lines linestyle 10 title "$ N= 1000000$"
+
+# -------------------------------------------------------------------------------- #
+
+set terminal epslatex
+set output '../res/img/triangular_chi.tex'
+set xlabel "$p$"
+set xrange [0.2:0.5]
+set ylabel "$\\chi$"
+set key top right
+
+plot "./data/triangular/triangular_10000.txt"   using 1:4 with lines linestyle 1  title "$ N= 10000$", \
+     "./data/triangular/triangular_40000.txt"   using 1:4 with lines linestyle 2  title "$ N= 40000$", \
+     "./data/triangular/triangular_90000.txt"   using 1:4 with lines linestyle 3  title "$ N= 90000$", \
+     # "./data/triangular/triangular_160000.txt"  using 1:4 with lines linestyle 4  title "$ N= 160000$", \
+     # "./data/triangular/triangular_250000.txt"  using 1:4 with lines linestyle 5  title "$ N= 250000$", \
+     # "./data/triangular/triangular_360000.txt"  using 1:4 with lines linestyle 6  title "$ N= 360000$", \
+     # "./data/triangular/triangular_490000.txt"  using 1:4 with lines linestyle 7  title "$ N= 490000$", \
+     # "./data/triangular/triangular_640000.txt"  using 1:4 with lines linestyle 8  title "$ N= 640000$", \
+     # "./data/triangular/triangular_810000.txt"  using 1:4 with lines linestyle 9  title "$ N= 810000$", \
+     # "./data/triangular/triangular_1000000.txt" using 1:4 with lines linestyle 10 title "$ N= 1000000$"
+
+# -------------------------------------------------------------------------------- #
+
+set terminal epslatex
+set output '../res/img/triangular_s.tex'
+set xlabel "$p$"
+set xrange [0.2:0.5]
+set ylabel "$\\langle s \\rangle$"
+set key top right
+
+plot "./data/triangular/triangular_10000.txt"   using 1:3 with lines linestyle 1  title "$ N= 10000$", \
+     "./data/triangular/triangular_40000.txt"   using 1:3 with lines linestyle 2  title "$ N= 40000$", \
+     "./data/triangular/triangular_90000.txt"   using 1:3 with lines linestyle 3  title "$ N= 90000$", \
+     # "./data/triangular/triangular_160000.txt"  using 1:3 with lines linestyle 4  title "$ N= 160000$", \
+     # "./data/triangular/triangular_250000.txt"  using 1:3 with lines linestyle 5  title "$ N= 250000$", \
+     # "./data/triangular/triangular_360000.txt"  using 1:3 with lines linestyle 6  title "$ N= 360000$", \
+     # "./data/triangular/triangular_490000.txt"  using 1:3 with lines linestyle 7  title "$ N= 490000$", \
+     # "./data/triangular/triangular_640000.txt"  using 1:3 with lines linestyle 8  title "$ N= 640000$", \
+     # "./data/triangular/triangular_810000.txt"  using 1:3 with lines linestyle 9  title "$ N= 810000$", \
+     # "./data/triangular/triangular_1000000.txt" using 1:3 with lines linestyle 10 title "$ N= 1000000$"
